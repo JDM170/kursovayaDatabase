@@ -40,8 +40,7 @@ namespace KursovayaDataBase
             {
                 using (ExcelHelper helper = new ExcelHelper())
                 {
-                    //if (helper.Open(filename: Path.Combine(Environment.CurrentDirectory, "D:\\KursovayaDataBase (TESTING)  V 3\\KursovayaDataBase\\nakladnaya.xlsx")))
-                    if (helper.Open(filepath: Path.Combine(Environment.CurrentDirectory, "D:\\GitHub\\kursovayaDatabase\\KursovayaDataBase\\nakladnaya.xlsx")))
+                    if (helper.Open(filepath: Path.Combine(Environment.CurrentDirectory, "D:\\GitHub\\kursovayaDatabase\\KursovayaDataBase\\NakladnayaExample.xlsx")))
                     {
                         int IDPost = 0;
                         int IDPharm = 0;
