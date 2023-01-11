@@ -22,9 +22,7 @@ namespace KursovayaDataBase
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet.Клиент". При необходимости она может быть перемещена или удалена.
             this.клиентTableAdapter.Fill(this.lSkladDataSet.Клиент);
-
         }
-
 
         private void DelClientButton_Click(object sender, EventArgs e)
         {
@@ -33,27 +31,28 @@ namespace KursovayaDataBase
             LSklad.Connect();
             LSklad.openConnection();
 
-            string query = "SELECT (`ID Улицы`) as StreetID FROM `Клиент` WHERE `ID Клиента` = @deleteIDClient";
+            string query;
+            OleDbCommand command;
+            int streetID = 0;
 
-            OleDbCommand command = new OleDbCommand(query, LSklad.getConnection());
+            query = "SELECT (`ID Улицы`) as StreetID FROM `Клиент` WHERE `ID Клиента` = @deleteIDClient";
+            command = new OleDbCommand(query, LSklad.getConnection());
             command.Parameters.Add("@deleteIDClient", OleDbType.Integer).Value = comboBox1.SelectedValue;
-            string result = null;
             OleDbDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                result = Convert.ToString(reader["StreetID"]);
+                streetID = Convert.ToInt32(reader["StreetID"]);
+            reader.Close();
 
             query = "DELETE FROM `Улица` WHERE `ID Улицы` = @deleteIDStreet";
-
-            command = new OleDbCommand(query, LSklad.getConnection());
-            command.Parameters.Add("@deleteIDStreet", OleDbType.Integer).Value = result;
-
+            command.Parameters.Clear();
+            command.CommandText = query;
+            command.Parameters.Add("@deleteIDStreet", OleDbType.Integer).Value = streetID;
             command.ExecuteNonQuery();
 
             query = "DELETE FROM `Клиент` WHERE `ID Клиента`= @deleteIDClient";
-
-            command = new OleDbCommand(query, LSklad.getConnection());
+            command.Parameters.Clear();
+            command.CommandText = query;
             command.Parameters.Add("@deleteIDClient", OleDbType.Integer).Value = comboBox1.SelectedValue;
-
             command.ExecuteNonQuery();
 
             MessageBox.Show("Удаление успешно!");

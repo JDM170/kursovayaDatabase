@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Windows.Forms.Integration;
 
 
 namespace KursovayaDataBase
@@ -41,18 +40,17 @@ namespace KursovayaDataBase
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
+            LSklad.closeConnection();
+
             if (table.Rows.Count > 0)
             {
                 MessageBox.Show("Вы авторизованы успешно!");
                 this.Hide();
                 Menu mainwindow = new Menu();
                 mainwindow.Show();
-
             }
             else
                 MessageBox.Show("Ошибка авторизации!");
-            
-            LSklad.closeConnection();
         }
             
         private void RegButton_Click(object sender, EventArgs e)

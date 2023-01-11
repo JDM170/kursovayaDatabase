@@ -49,30 +49,29 @@
             this.SearchClient = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.городTableAdapter = new KursovayaDataBase.LSkladDataSetTableAdapters.ГородTableAdapter();
-            this.улицаTableAdapter = new KursovayaDataBase.LSkladDataSetTableAdapters.УлицаTableAdapter();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.UpdButtonClient = new System.Windows.Forms.Button();
-            this.DelButtonClient = new System.Windows.Forms.Button();
-            this.InsButtonClient = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.iDУлицыDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.названиеDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.клиентУлицаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.iDГородаDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.названиеDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.клиентГородBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.городTableAdapter = new KursovayaDataBase.LSkladDataSetTableAdapters.ГородTableAdapter();
+            this.улицаTableAdapter = new KursovayaDataBase.LSkladDataSetTableAdapters.УлицаTableAdapter();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.DelButtonClient = new System.Windows.Forms.Button();
+            this.InsButtonClient = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.клиентBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lSkladDataSet)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.клиентУлицаBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.клиентГородBindingSource)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -256,6 +255,25 @@
             this.dataGridView3.Size = new System.Drawing.Size(259, 150);
             this.dataGridView3.TabIndex = 39;
             // 
+            // iDУлицыDataGridViewTextBoxColumn1
+            // 
+            this.iDУлицыDataGridViewTextBoxColumn1.DataPropertyName = "ID Улицы";
+            this.iDУлицыDataGridViewTextBoxColumn1.HeaderText = "ID Улицы";
+            this.iDУлицыDataGridViewTextBoxColumn1.Name = "iDУлицыDataGridViewTextBoxColumn1";
+            this.iDУлицыDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // названиеDataGridViewTextBoxColumn2
+            // 
+            this.названиеDataGridViewTextBoxColumn2.DataPropertyName = "Название";
+            this.названиеDataGridViewTextBoxColumn2.HeaderText = "Название";
+            this.названиеDataGridViewTextBoxColumn2.Name = "названиеDataGridViewTextBoxColumn2";
+            this.названиеDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // клиентУлицаBindingSource
+            // 
+            this.клиентУлицаBindingSource.DataMember = "Клиент_Улица";
+            this.клиентУлицаBindingSource.DataSource = this.клиентBindingSource;
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
@@ -272,6 +290,25 @@
             this.dataGridView2.Size = new System.Drawing.Size(255, 150);
             this.dataGridView2.TabIndex = 38;
             // 
+            // iDГородаDataGridViewTextBoxColumn1
+            // 
+            this.iDГородаDataGridViewTextBoxColumn1.DataPropertyName = "ID Города";
+            this.iDГородаDataGridViewTextBoxColumn1.HeaderText = "ID Города";
+            this.iDГородаDataGridViewTextBoxColumn1.Name = "iDГородаDataGridViewTextBoxColumn1";
+            this.iDГородаDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // названиеDataGridViewTextBoxColumn1
+            // 
+            this.названиеDataGridViewTextBoxColumn1.DataPropertyName = "Название";
+            this.названиеDataGridViewTextBoxColumn1.HeaderText = "Название";
+            this.названиеDataGridViewTextBoxColumn1.Name = "названиеDataGridViewTextBoxColumn1";
+            this.названиеDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // клиентГородBindingSource
+            // 
+            this.клиентГородBindingSource.DataMember = "Клиент_Город";
+            this.клиентГородBindingSource.DataSource = this.клиентBindingSource;
+            // 
             // городTableAdapter
             // 
             this.городTableAdapter.ClearBeforeFill = true;
@@ -283,7 +320,6 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.UpdButtonClient);
             this.panel3.Controls.Add(this.DelButtonClient);
             this.panel3.Controls.Add(this.InsButtonClient);
             this.panel3.Controls.Add(this.label4);
@@ -291,18 +327,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(207, 326);
             this.panel3.TabIndex = 39;
-            // 
-            // UpdButtonClient
-            // 
-            this.UpdButtonClient.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.UpdButtonClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.UpdButtonClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UpdButtonClient.Location = new System.Drawing.Point(48, 267);
-            this.UpdButtonClient.Name = "UpdButtonClient";
-            this.UpdButtonClient.Size = new System.Drawing.Size(110, 42);
-            this.UpdButtonClient.TabIndex = 4;
-            this.UpdButtonClient.Text = "Update";
-            this.UpdButtonClient.UseVisualStyleBackColor = false;
             // 
             // DelButtonClient
             // 
@@ -340,44 +364,6 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Работа с Базой данных";
             // 
-            // iDУлицыDataGridViewTextBoxColumn1
-            // 
-            this.iDУлицыDataGridViewTextBoxColumn1.DataPropertyName = "ID Улицы";
-            this.iDУлицыDataGridViewTextBoxColumn1.HeaderText = "ID Улицы";
-            this.iDУлицыDataGridViewTextBoxColumn1.Name = "iDУлицыDataGridViewTextBoxColumn1";
-            this.iDУлицыDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // названиеDataGridViewTextBoxColumn2
-            // 
-            this.названиеDataGridViewTextBoxColumn2.DataPropertyName = "Название";
-            this.названиеDataGridViewTextBoxColumn2.HeaderText = "Название";
-            this.названиеDataGridViewTextBoxColumn2.Name = "названиеDataGridViewTextBoxColumn2";
-            this.названиеDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // клиентУлицаBindingSource
-            // 
-            this.клиентУлицаBindingSource.DataMember = "Клиент_Улица";
-            this.клиентУлицаBindingSource.DataSource = this.клиентBindingSource;
-            // 
-            // iDГородаDataGridViewTextBoxColumn1
-            // 
-            this.iDГородаDataGridViewTextBoxColumn1.DataPropertyName = "ID Города";
-            this.iDГородаDataGridViewTextBoxColumn1.HeaderText = "ID Города";
-            this.iDГородаDataGridViewTextBoxColumn1.Name = "iDГородаDataGridViewTextBoxColumn1";
-            this.iDГородаDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // названиеDataGridViewTextBoxColumn1
-            // 
-            this.названиеDataGridViewTextBoxColumn1.DataPropertyName = "Название";
-            this.названиеDataGridViewTextBoxColumn1.HeaderText = "Название";
-            this.названиеDataGridViewTextBoxColumn1.Name = "названиеDataGridViewTextBoxColumn1";
-            this.названиеDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // клиентГородBindingSource
-            // 
-            this.клиентГородBindingSource.DataMember = "Клиент_Город";
-            this.клиентГородBindingSource.DataSource = this.клиентBindingSource;
-            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,11 +383,11 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.клиентУлицаBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.клиентГородBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.клиентУлицаBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.клиентГородBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -441,6 +427,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button InsButtonClient;
         private System.Windows.Forms.Button DelButtonClient;
-        private System.Windows.Forms.Button UpdButtonClient;
     }
 }

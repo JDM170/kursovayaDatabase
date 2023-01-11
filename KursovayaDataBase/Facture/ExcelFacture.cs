@@ -63,15 +63,16 @@ namespace KursovayaDataBase
                         string PricePharm = null;
                         string CountPharm = null;
                         string SurnameStuff = null;
-                        
-                        string query = null;
-                        OleDbCommand command;
-                        OleDbDataReader reader;
 
                         DataBase LSklad = new DataBase();
 
                         LSklad.Connect();
                         LSklad.openConnection();
+
+                        string query = null;
+                        OleDbCommand command;
+                        OleDbDataReader reader;
+
 
                         query = "SELECT `ID Клиента` as IDClient FROM `Счет-Фактура` WHERE `ID Фактуры` = `@IDFacture`;";
                         command = new OleDbCommand(query, LSklad.getConnection());

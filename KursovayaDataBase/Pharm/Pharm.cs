@@ -17,12 +17,9 @@ namespace KursovayaDataBase
         public Pharm()
         {
             InitializeComponent();
-            
         }
 
-
-        private void Pharm_Load(object sender, EventArgs e)
-
+        private void updateGridView()
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet.Вид_упаковки". При необходимости она может быть перемещена или удалена.
             this.вид_упаковкиTableAdapter.Fill(this.lSkladDataSet.Вид_упаковки);
@@ -34,28 +31,18 @@ namespace KursovayaDataBase
             this.ценаTableAdapter.Fill(this.lSkladDataSet.Цена);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet.Лекарства". При необходимости она может быть перемещена или удалена.
             this.лекарстваTableAdapter.Fill(this.lSkladDataSet.Лекарства);
+            
             dataGridView2.ClearSelection();
             dataGridView3.ClearSelection();
             dataGridView4.ClearSelection();
             dataGridView5.ClearSelection();
             dataGridView6.ClearSelection();
-
         }
 
-        private void InsButtonPharm_Click(object sender, EventArgs e)
+        private void Pharm_Load(object sender, EventArgs e)
         {
-            InsPharm inspharm = new InsPharm();
-            inspharm.Show();
-           
+            updateGridView();
         }
-
-        private void DelButtonPharm_Click(object sender, EventArgs e)
-        {
-            DelPharm delpharm = new DelPharm();
-            delpharm.Show();
-
-        }
-
 
         private void SearchPharmButton_Click(object sender, EventArgs e)
         {
@@ -64,14 +51,11 @@ namespace KursovayaDataBase
                 for (int i = 0; i < dataGridView2.RowCount; i++)
                 {
                     dataGridView2.Rows[i].Selected = false;
-
                     for (int j = 0; j < dataGridView2.ColumnCount; j++)
                         if (dataGridView2.Rows[i].Cells[j].Value != null)
                             if (dataGridView2.Rows[i].Cells[j].Value.ToString().ToLower().Contains(SearchPharm.Text.ToLower()))
-
                             {
                                 dataGridView2.Rows[i].Selected = true;
-
                                 break;
                             }
                 }
@@ -87,22 +71,18 @@ namespace KursovayaDataBase
             }
         }
 
-        private void UpdPharmButton_Click(object sender, EventArgs e)
+        private void InsButtonPharm_Click(object sender, EventArgs e)
         {
-            dataGridView2.Refresh();
-
-            this.вид_упаковкиTableAdapter.Fill(this.lSkladDataSet.Вид_упаковки);
-            this.категорияTableAdapter.Fill(this.lSkladDataSet.Категория);
-            this.производительTableAdapter.Fill(this.lSkladDataSet.Производитель);
-            this.ценаTableAdapter.Fill(this.lSkladDataSet.Цена);
-            this.лекарстваTableAdapter.Fill(this.lSkladDataSet.Лекарства);
-            dataGridView2.ClearSelection();
-            dataGridView3.ClearSelection();
-            dataGridView4.ClearSelection();
-            dataGridView5.ClearSelection();
-            dataGridView6.ClearSelection();
-            MessageBox.Show("Страница обновлена!");
+            InsPharm inspharm = new InsPharm();
+            inspharm.ShowDialog();
+            updateGridView();
         }
 
+        private void DelButtonPharm_Click(object sender, EventArgs e)
+        {
+            DelPharm delpharm = new DelPharm();
+            delpharm.ShowDialog();
+            updateGridView();
+        }
     }
 }

@@ -17,12 +17,7 @@ namespace KursovayaDataBase
             InitializeComponent();
         }
 
-        private void Suppliers_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void Suppliers_Load(object sender, EventArgs e)
+        private void updateGridView()
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet1.Город". При необходимости она может быть перемещена или удалена.
             this.городTableAdapter.Fill(this.lSkladDataSet1.Город);
@@ -34,7 +29,11 @@ namespace KursovayaDataBase
             this.поставщикTableAdapter.Fill(this.lSkladDataSet1.Поставщик);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet.Поставщик". При необходимости она может быть перемещена или удалена.
             this.поставщикTableAdapter.Fill(this.lSkladDataSet.Поставщик);
+        }
 
+        private void Suppliers_Load(object sender, EventArgs e)
+        {
+            updateGridView();
         }
 
         private void SearchSuppliesButton_Click(object sender, EventArgs e)
@@ -44,14 +43,11 @@ namespace KursovayaDataBase
                 for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
                     dataGridView1.Rows[i].Selected = false;
-
                     for (int j = 0; j < dataGridView1.ColumnCount; j++)
                         if (dataGridView1.Rows[i].Cells[j].Value != null)
                             if (dataGridView1.Rows[i].Cells[j].Value.ToString().ToLower().Contains(SearchSupplies.Text.ToLower()))
-
                             {
                                 dataGridView1.Rows[i].Selected = true;
-
                                 break;
                             }
                 }
@@ -69,13 +65,15 @@ namespace KursovayaDataBase
         private void InsButtonSupplies_Click(object sender, EventArgs e)
         {
             InsSupplies inssupplies = new InsSupplies();
-            inssupplies.Show();
+            inssupplies.ShowDialog();
+            updateGridView();
         }
 
         private void DelButtonSupplies_Click(object sender, EventArgs e)
         {
             DelSupplies delsupplies = new DelSupplies();
-            delsupplies.Show();
+            delsupplies.ShowDialog();
+            updateGridView();
         }
 
     }

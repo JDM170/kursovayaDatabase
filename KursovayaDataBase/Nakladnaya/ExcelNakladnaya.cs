@@ -61,14 +61,14 @@ namespace KursovayaDataBase
                         string PricePharm = null;
                         string CountPharm = null;
 
-                        string query = null;
-                        OleDbCommand command;
-                        OleDbDataReader reader;
-
                         DataBase LSklad = new DataBase();
 
                         LSklad.Connect();
                         LSklad.openConnection();
+
+                        string query = null;
+                        OleDbCommand command;
+                        OleDbDataReader reader;
 
 
                         query = "SELECT `ID Поставщика` as IDPost FROM `Накладная` WHERE `ID Накладной` = `@InsertIDNakladnaya`;";
