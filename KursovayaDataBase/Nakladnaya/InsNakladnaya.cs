@@ -24,7 +24,6 @@ namespace KursovayaDataBase
             this.лекарстваTableAdapter.Fill(this.lSkladDataSet.Лекарства);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet.Поставщик". При необходимости она может быть перемещена или удалена.
             this.поставщикTableAdapter.Fill(this.lSkladDataSet.Поставщик);
-
         }
 
         private void InsButtonNak_Click(object sender, EventArgs e)
@@ -46,6 +45,7 @@ namespace KursovayaDataBase
             MessageBox.Show("Добавлено успешно!");
 
             LSklad.closeConnection();
+
             this.Close();
         }
 

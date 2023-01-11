@@ -22,7 +22,6 @@ namespace KursovayaDataBase
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet.Накладная". При необходимости она может быть перемещена или удалена.
             this.накладнаяTableAdapter.Fill(this.lSkladDataSet.Накладная);
-
         }
 
         private void DelButtonNak_Click(object sender, EventArgs e)

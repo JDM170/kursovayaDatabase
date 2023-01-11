@@ -30,6 +30,7 @@ namespace KursovayaDataBase
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet._Счет_Фактура". При необходимости она может быть перемещена или удалена.
             this.счет_ФактураTableAdapter.Fill(this.lSkladDataSet._Счет_Фактура);
         }
+
         private void ExcelFacture_Load(object sender, EventArgs e)
         {
             updateGridView();
@@ -41,14 +42,16 @@ namespace KursovayaDataBase
             {
                 using (ExcelHelper helper = new ExcelHelper())
                 {
-                    if (helper.Open(filename: Path.Combine(Environment.CurrentDirectory, "D:\\KursovayaDataBase (TESTING)  V 3\\KursovayaDataBase\\Facture.xlsx")))
+                    //if (helper.Open(filename: Path.Combine(Environment.CurrentDirectory, "D:\\KursovayaDataBase (TESTING)  V 3\\KursovayaDataBase\\Facture.xlsx")))
+                    if (helper.Open(filepath: Path.Combine(Environment.CurrentDirectory, "D:\\GitHub\\kursovayaDatabase\\KursovayaDataBase\\Facture.xlsx")))
                     {
+                        int IDFacture = Convert.ToInt32(comboBox1.SelectedValue);
                         int IDClient = 0;
                         int IDPharm = 0;
                         int IDStuff = 0;
                         int IDCity = 0;
                         int IDStreet = 0;
-                        string IDFacture = null;
+                        //string IDFacture = null;
                         string NameClient = null;
                         string CityClient = null;
                         string StreetClient = null;
@@ -70,60 +73,64 @@ namespace KursovayaDataBase
                         LSklad.Connect();
                         LSklad.openConnection();
 
-                        query = "SELECT `ID Клиента` as IDClient FROM `Счет-Фактура` WHERE `ID Фактуры` = `@InsertIDFacture`;";
+                        query = "SELECT `ID Клиента` as IDClient FROM `Счет-Фактура` WHERE `ID Фактуры` = `@IDFacture`;";
                         command = new OleDbCommand(query, LSklad.getConnection());
-                        command.Parameters.Add("@InsertIDFacture", OleDbType.Integer).Value = comboBox1.SelectedValue;
+                        command.Parameters.Add("@IDFacture", OleDbType.Integer).Value = IDFacture;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             IDClient = Convert.ToInt32(reader["IDClient"]);
                         reader.Close();
-                        //MessageBox.Show("IDClient: " + IDClient.ToString());
+
 
                         query = "SELECT `Название` as nameclient FROM `Клиент` WHERE `ID Клиента` = `@IDClient`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDClient", OleDbType.VarChar).Value = IDClient.ToString();
+                        command.Parameters.Add("@IDClient", OleDbType.Integer).Value = IDClient;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             NameClient = Convert.ToString(reader["nameclient"]);
                         reader.Close();
-                        //MessageBox.Show("NameClient: " + NameClient);
+
 
                         query = "SELECT `ID Города` as IDCity FROM `Клиент` WHERE `ID Клиента` = `@IDClient`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDClient", OleDbType.VarChar).Value = IDClient.ToString();
+                        command.Parameters.Add("@IDClient", OleDbType.Integer).Value = IDClient;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             IDCity = Convert.ToInt32(reader["IDCity"]);
                         reader.Close();
 
+
                         query = "SELECT `ID Улицы` as IDStreet FROM `Клиент` WHERE `ID Клиента` = `@IDClient`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDClient", OleDbType.VarChar).Value = IDClient.ToString();
+                        command.Parameters.Add("@IDClient", OleDbType.Integer).Value = IDClient;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             IDStreet = Convert.ToInt32(reader["IDStreet"]);
                         reader.Close();
 
+
                         query = "SELECT `Название` as city FROM `Город` WHERE `ID Города` = `@IDCity`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDClient", OleDbType.VarChar).Value = IDCity.ToString();
+                        command.Parameters.Add("@IDClient", OleDbType.Integer).Value = IDCity;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             CityClient = Convert.ToString(reader["city"]);
                         reader.Close();
 
+
                         query = "SELECT `Название` as street FROM `Улица` WHERE `ID Улицы` = `@IDStreet`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDClient", OleDbType.VarChar).Value = IDStreet.ToString();
+                        command.Parameters.Add("@IDStreet", OleDbType.Integer).Value = IDStreet;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             StreetClient = Convert.ToString(reader["street"]);
                         reader.Close();
+
 
                         query = "SELECT `Дом` as houseclient FROM `Клиент` WHERE `ID Клиента` = `@IDClient`;";
                         command.Parameters.Clear();
@@ -133,7 +140,7 @@ namespace KursovayaDataBase
                         while (reader.Read())
                             HouseClient = Convert.ToString(reader["houseclient"]);
                         reader.Close();
-                        //MessageBox.Show("HouseClient: " + HouseClient);
+
 
                         query = "SELECT `Корпус` as campusclient FROM `Клиент` WHERE `ID Клиента` = `@IDClient`;";
                         command.Parameters.Clear();
@@ -143,7 +150,7 @@ namespace KursovayaDataBase
                         while (reader.Read())
                             CampusClient = Convert.ToString(reader["campusclient"]);
                         reader.Close();
-                        //MessageBox.Show("CampusClient: " + CampusClient);
+
 
                         query = "SELECT `Офис` as officeclient FROM `Клиент` WHERE `ID Клиента` = `IDClient`;";
                         command.Parameters.Clear();
@@ -153,7 +160,7 @@ namespace KursovayaDataBase
                         while (reader.Read())
                             OfficeClient = Convert.ToString(reader["officeclient"]);
                         reader.Close();
-                        //MessageBox.Show("OfficeClient: " + OfficeClient);
+
 
                         query = "SELECT `ИНН` as innclient FROM `Клиент` WHERE `ID Клиента` = `@IDClient`;";
                         command.Parameters.Clear();
@@ -163,17 +170,17 @@ namespace KursovayaDataBase
                         while (reader.Read())
                             INNClient = Convert.ToString(reader["innclient"]);
                         reader.Close();
-                        //MessageBox.Show("INNClient: " + INNClient);
 
-                        query = "SELECT `ID Лекарства` as IDPharm FROM `Счет-Фактура` WHERE `ID Фактуры` = `@InsertIDFacture`;";
+
+                        query = "SELECT `ID Лекарства` as IDPharm FROM `Счет-Фактура` WHERE `ID Фактуры` = `@IDFacture`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@InsertIDFacture", OleDbType.Integer).Value = comboBox1.SelectedValue;
+                        command.Parameters.Add("@IDFacture", OleDbType.Integer).Value = IDFacture;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             IDPharm = Convert.ToInt32(reader["IDPharm"]);
                         reader.Close();
-                        //MessageBox.Show("IDPharm: " + IDPharm.ToString());
+
 
                         query = "SELECT `Название` as namepharm FROM `Лекарства` WHERE `ID Лекарства` = `@IDPharm`;";
                         command.Parameters.Clear();
@@ -183,7 +190,7 @@ namespace KursovayaDataBase
                         while (reader.Read())
                             NamePharm = Convert.ToString(reader["namepharm"]);
                         reader.Close();
-                        //MessageBox.Show("NamePharm: " + NamePharm);
+
 
                         query = "SELECT `Цена` as price FROM `Цена` WHERE `ID Лекарства` = `@IDPharm`;";
                         command.Parameters.Clear();
@@ -193,27 +200,27 @@ namespace KursovayaDataBase
                         while (reader.Read())
                             PricePharm = Convert.ToString(reader["price"]);
                         reader.Close();
-                        //MessageBox.Show("PricePharm: " + PricePharm);
 
-                        query = "SELECT `Количество` as CountPharm FROM `Счет-Фактура` WHERE `ID Фактуры` = `@InsertIDFacture`;";
+
+                        query = "SELECT `Количество` as CountPharm FROM `Счет-Фактура` WHERE `ID Фактуры` = `@IDFacture`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@InsertIDFacture", OleDbType.Integer).Value = comboBox1.SelectedValue;
+                        command.Parameters.Add("@IDFacture", OleDbType.Integer).Value = IDFacture;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             CountPharm = Convert.ToString(reader["CountPharm"]);
                         reader.Close();
-                        //MessageBox.Show("CountPharm: " + CountPharm);
 
-                        query = "SELECT `ID Сотрудника` as IDStuff FROM `Счет-Фактура` WHERE `ID Фактуры` = `@InsertIDFacture`;";
+
+                        query = "SELECT `ID Сотрудника` as IDStuff FROM `Счет-Фактура` WHERE `ID Фактуры` = `@IDFacture`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@InsertIDFacture", OleDbType.Integer).Value = comboBox1.SelectedValue;
+                        command.Parameters.Add("@IDFacture", OleDbType.Integer).Value = IDFacture;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             IDStuff = Convert.ToInt32(reader["IDStuff"]);
                         reader.Close();
-                        //MessageBox.Show("IDStuff: " + IDStuff.ToString());
+
 
                         query = "SELECT `Фамилия` as surname FROM `Сотрудники` WHERE `ID Сотрудника` = `@IDStuff`;";
                         command.Parameters.Clear();
@@ -223,14 +230,14 @@ namespace KursovayaDataBase
                         while (reader.Read())
                             SurnameStuff = Convert.ToString(reader["surname"]);
                         reader.Close();
-                        //MessageBox.Show("SurnameStuff: " + SurnameStuff);
+
 
                         LSklad.closeConnection();
 
-                        IDFacture = Convert.ToString(IDClient);
+                        //IDFacture = Convert.ToString(IDClient);
                         String Time = Convert.ToString(DateTime.Now);
 
-                        helper.Set(column: "E", row: 1, data: IDFacture);
+                        helper.Set(column: "E", row: 1, data: IDClient.ToString());
                         helper.Set(column: "G", row: 1, data: Time);
                         helper.Set(column: "B", row: 6, data: NameClient);
                         helper.Set(column: "C", row: 7, data: CityClient);
@@ -244,7 +251,7 @@ namespace KursovayaDataBase
                         helper.Set(column: "E", row: 13, data: PricePharm);
                         /*helper.Set(column: "B", row: 1, data: "");*/
 
-                        helper.Save();
+                        helper.Save("D:\\GitHub\\kursovayaDatabase\\KursovayaDataBase\\FactureTest.xlsx");
 
                         MessageBox.Show("Успешно!");
                     }
@@ -254,7 +261,6 @@ namespace KursovayaDataBase
                         return;
                     }
                 }
-                //Console.Read();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);

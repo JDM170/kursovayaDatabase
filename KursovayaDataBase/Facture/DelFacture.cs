@@ -22,7 +22,6 @@ namespace KursovayaDataBase
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet._Счет_Фактура". При необходимости она может быть перемещена или удалена.
             this.счет_ФактураTableAdapter.Fill(this.lSkladDataSet._Счет_Фактура);
-
         }
 
         private void DelFactureButton_Click(object sender, EventArgs e)

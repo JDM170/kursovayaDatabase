@@ -19,16 +19,16 @@ namespace KursovayaDataBase
             excel = new Microsoft.Office.Interop.Excel.Application();
         }
 
-        internal bool Open(string filename)
+        internal bool Open(string filepath)
         {
             try
             {
-                if (!File.Exists(filename))
+                if (!File.Exists(filepath))
                 {
                     MessageBox.Show("Неудачное соединение с Excel! Обратитесь к администратору!");
                     return false;
                 }
-                workbook = excel.Workbooks.Open(filename);
+                workbook = excel.Workbooks.Open(filepath);
                 return true;
             }
             catch (Exception) {
@@ -37,13 +37,9 @@ namespace KursovayaDataBase
             }
         }
 
-        internal void Save()
+        internal void Save(string filepath)
         {
-            workbook.SaveAs(Path.Combine(Environment.CurrentDirectory, "D:\\KursovayaDataBase (TESTING)  V 3\\KursovayaDataBase\\FactureTest.xlsx"));
-        }
-        internal void SaveNakladnaya()
-        {
-            workbook.SaveAs(Path.Combine(Environment.CurrentDirectory, "D:\\KursovayaDataBase (TESTING)  V 3\\KursovayaDataBase\\nakladnayaTest.xlsx"));
+            workbook.SaveAs(Path.Combine(Environment.CurrentDirectory, filepath));
         }
 
         internal bool Set(string column, int row, string data)

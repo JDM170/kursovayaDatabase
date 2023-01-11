@@ -28,9 +28,9 @@ namespace KursovayaDataBase
             // TODO: данная строка кода позволяет загрузить данные в таблицу "lSkladDataSet.Накладная". При необходимости она может быть перемещена или удалена.
             this.накладнаяTableAdapter.Fill(this.lSkladDataSet.Накладная);
         }
+
         private void ExcelNakladnaya_Load(object sender, EventArgs e)
         {
-            
             updateGridView();
         }
 
@@ -40,7 +40,8 @@ namespace KursovayaDataBase
             {
                 using (ExcelHelper helper = new ExcelHelper())
                 {
-                    if (helper.Open(filename: Path.Combine(Environment.CurrentDirectory, "D:\\KursovayaDataBase (TESTING)  V 3\\KursovayaDataBase\\nakladnaya.xlsx")))
+                    //if (helper.Open(filename: Path.Combine(Environment.CurrentDirectory, "D:\\KursovayaDataBase (TESTING)  V 3\\KursovayaDataBase\\nakladnaya.xlsx")))
+                    if (helper.Open(filepath: Path.Combine(Environment.CurrentDirectory, "D:\\GitHub\\kursovayaDatabase\\KursovayaDataBase\\nakladnaya.xlsx")))
                     {
                         int IDPost = 0;
                         int IDPharm = 0;
@@ -69,6 +70,7 @@ namespace KursovayaDataBase
                         LSklad.Connect();
                         LSklad.openConnection();
 
+
                         query = "SELECT `ID Поставщика` as IDPost FROM `Накладная` WHERE `ID Накладной` = `@InsertIDNakladnaya`;";
                         command = new OleDbCommand(query, LSklad.getConnection());
                         command.Parameters.Add("@InsertIDNakladnaya", OleDbType.Integer).Value = comboBox1.SelectedValue;
@@ -81,7 +83,7 @@ namespace KursovayaDataBase
                         query = "SELECT `Название` as namepost FROM `Поставщик` WHERE `ID Поставщика` = `@IDPost`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDPost", OleDbType.VarChar).Value = IDPost.ToString();
+                        command.Parameters.Add("@IDPost", OleDbType.Integer).Value = IDPost;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             NamePost = Convert.ToString(reader["namepost"]);
@@ -91,56 +93,62 @@ namespace KursovayaDataBase
                         query = "SELECT `ID Банка` as IDBank FROM `Поставщик` WHERE `ID Поставщика` = `@IDPost`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDPost", OleDbType.VarChar).Value = IDBank.ToString();
+                        command.Parameters.Add("@IDPost", OleDbType.Integer).Value = IDPost;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             IDBank = Convert.ToInt32(reader["IDBank"]);
                         reader.Close();
 
+
                         query = "SELECT `Название` as bank FROM `Банки` WHERE `ID Банка` = `@IDBank`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDPost", OleDbType.VarChar).Value = IDPost.ToString();
+                        command.Parameters.Add("@IDBank", OleDbType.Integer).Value = IDBank;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             BankPost = Convert.ToString(reader["bank"]);
                         reader.Close();
 
-                        query = "SELECT `ID Города` as IDCity FROM `Поставщик` WHERE `ID Поставщика` = `@IDCity`;";
+
+                        query = "SELECT `ID Города` as IDCity FROM `Поставщик` WHERE `ID Поставщика` = `@IDPost`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDPost", OleDbType.VarChar).Value = IDCity.ToString();
+                        command.Parameters.Add("@IDPost", OleDbType.Integer).Value = IDPost;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             IDCity = Convert.ToInt32(reader["IDCity"]);
                         reader.Close();
 
-                        query = "SELECT `ID Улицы` as IDStreet FROM `Поставщик` WHERE `ID Поставщика` = `@IDStreet`;";
+
+                        query = "SELECT `ID Улицы` as IDStreet FROM `Поставщик` WHERE `ID Поставщика` = `@IDPost`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDPost", OleDbType.VarChar).Value = IDStreet.ToString();
+                        command.Parameters.Add("@IDPost", OleDbType.Integer).Value = IDPost;
                         reader = command.ExecuteReader();
                         while (reader.Read())
                             IDStreet = Convert.ToInt32(reader["IDStreet"]);
                         reader.Close();
 
-                        query = "SELECT `Название` as city FROM `Город` WHERE `ID Города` = `@IDCity`;";
+
+                        query = "SELECT `Название` as cityName FROM `Город` WHERE `ID Города` = `@IDCity`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDPost", OleDbType.VarChar).Value = IDCity.ToString();
+                        command.Parameters.Add("@IDCity", OleDbType.Integer).Value = IDCity;
                         reader = command.ExecuteReader();
                         while (reader.Read())
-                            CityPost = Convert.ToString(reader["city"]);
+                            CityPost = Convert.ToString(reader["cityName"]);
                         reader.Close();
 
-                        query = "SELECT `Название` as street FROM `Улица` WHERE `ID Улицы` = `@IDStreet`;";
+
+                        query = "SELECT `Название` as streetName FROM `Улица` WHERE `ID Улицы` = `@IDStreet`;";
                         command.Parameters.Clear();
                         command.CommandText = query;
-                        command.Parameters.Add("@IDPost", OleDbType.VarChar).Value = IDStreet.ToString();
+                        command.Parameters.Add("@IDStreet", OleDbType.Integer).Value = IDStreet;
                         reader = command.ExecuteReader();
                         while (reader.Read())
-                            StreetPost = Convert.ToString(reader["street"]);
+                            StreetPost = Convert.ToString(reader["streetName"]);
                         reader.Close();
+
 
                         query = "SELECT `Дом` as housepost FROM `Поставщик` WHERE `ID Поставщика` = `@IDPost`;";
                         command.Parameters.Clear();
@@ -220,8 +228,7 @@ namespace KursovayaDataBase
                         while (reader.Read())
                             CountPharm = Convert.ToString(reader["CountPharm"]);
                         reader.Close();
-                       
-
+                        
 
                         LSklad.closeConnection();
 
@@ -243,7 +250,7 @@ namespace KursovayaDataBase
 
                         /*helper.Set(column: "B", row: 1, data: "");*/
 
-                        helper.SaveNakladnaya();
+                        helper.Save("D:\\GitHub\\kursovayaDatabase\\KursovayaDataBase\\nakladnayaTest.xlsx");
 
                         MessageBox.Show("Успешно!");
                     }
@@ -253,7 +260,6 @@ namespace KursovayaDataBase
                         return;
                     }
                 }
-                //Console.Read();
             }
             catch (Exception ex)
             {
