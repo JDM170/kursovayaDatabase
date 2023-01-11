@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursovayaDataBase", "KursovayaDataBase\KursovayaDataBase.csproj", "{AB3781C2-AA27-4202-A105-35DC9BE70A87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB3781C2-AA27-4202-A105-35DC9BE70A87}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{AB3781C2-AA27-4202-A105-35DC9BE70A87}.Debug|Any CPU.Build.0 = Debug|x64
+		{AB3781C2-AA27-4202-A105-35DC9BE70A87}.Debug|x64.ActiveCfg = Debug|x64
+		{AB3781C2-AA27-4202-A105-35DC9BE70A87}.Debug|x64.Build.0 = Debug|x64
+		{AB3781C2-AA27-4202-A105-35DC9BE70A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3781C2-AA27-4202-A105-35DC9BE70A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB3781C2-AA27-4202-A105-35DC9BE70A87}.Release|x64.ActiveCfg = Release|x64
+		{AB3781C2-AA27-4202-A105-35DC9BE70A87}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8774D641-1E89-4384-8407-A8DE427729C0}
+	EndGlobalSection
+EndGlobal

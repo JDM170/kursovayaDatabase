@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AB3781C2-AA27-4202-A105-35DC9BE70A87}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>KursovayaDataBase</RootNamespace>
+    <AssemblyName>KursovayaDataBase</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthRegister\Auth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthRegister\Auth.Designer.cs">
+      <DependentUpon>Auth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Banks\Banks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Banks\Banks.Designer.cs">
+      <DependentUpon>Banks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Banks\DelBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Banks\DelBank.Designer.cs">
+      <DependentUpon>DelBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Banks\InsBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Banks\InsBank.Designer.cs">
+      <DependentUpon>InsBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category\Categories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\Categories.Designer.cs">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category\DelCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\DelCategory.Designer.cs">
+      <DependentUpon>DelCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category\InsCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\InsCategory.Designer.cs">
+      <DependentUpon>InsCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="City\Cities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="City\Cities.Designer.cs">
+      <DependentUpon>Cities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="City\DelCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="City\DelCity.Designer.cs">
+      <DependentUpon>DelCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="City\InsCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="City\InsCity.Designer.cs">
+      <DependentUpon>InsCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client\Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase.cs" />
+    <Compile Include="Client\DelClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\DelClient.Designer.cs">
+      <DependentUpon>DelClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client\InsClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\InsClient.Designer.cs">
+      <DependentUpon>InsClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facture\DelFacture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facture\DelFacture.Designer.cs">
+      <DependentUpon>DelFacture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facture\ExcelFacture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facture\ExcelFacture.Designer.cs">
+      <DependentUpon>ExcelFacture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facture\InsFacture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facture\InsFacture.Designer.cs">
+      <DependentUpon>InsFacture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nakladnaya\DelNakladnaya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nakladnaya\DelNakladnaya.Designer.cs">
+      <DependentUpon>DelNakladnaya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nakladnaya\ExcelNakladnaya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nakladnaya\ExcelNakladnaya.Designer.cs">
+      <DependentUpon>ExcelNakladnaya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nakladnaya\InsNakladnaya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nakladnaya\InsNakladnaya.Designer.cs">
+      <DependentUpon>InsNakladnaya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stuff\DelStuff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stuff\DelStuff.Designer.cs">
+      <DependentUpon>DelStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelHelper.cs" />
+    <Compile Include="Stuff\InsStuff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stuff\InsStuff.Designer.cs">
+      <DependentUpon>InsStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Package\DelPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Package\DelPackage.Designer.cs">
+      <DependentUpon>DelPackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Package\InsPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Package\InsPackage.Designer.cs">
+      <DependentUpon>InsPackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Package\Packages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Package\Packages.Designer.cs">
+      <DependentUpon>Packages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stuff\Stuff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stuff\Stuff.Designer.cs">
+      <DependentUpon>Stuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplies\DelSupplies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplies\DelSupplies.Designer.cs">
+      <DependentUpon>DelSupplies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplies\InsSupplies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplies\InsSupplies.Designer.cs">
+      <DependentUpon>InsSupplies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pharm\DelPharm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharm\DelPharm.Designer.cs">
+      <DependentUpon>DelPharm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pharm\InsPharm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharm\InsPharm.Designer.cs">
+      <DependentUpon>InsPharm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LSkladDataSet.cs">
+      <DependentUpon>LSkladDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="LSkladDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LSkladDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Pharm\Pharm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharm\Pharm.Designer.cs">
+      <DependentUpon>Pharm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AuthRegister\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthRegister\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplies\Suppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplies\Suppliers.Designer.cs">
+      <DependentUpon>Suppliers.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AuthRegister\Auth.resx">
+      <DependentUpon>Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Banks\Banks.resx">
+      <DependentUpon>Banks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Banks\DelBank.resx">
+      <DependentUpon>DelBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Banks\InsBank.resx">
+      <DependentUpon>InsBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\Categories.resx">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\DelCategory.resx">
+      <DependentUpon>DelCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\InsCategory.resx">
+      <DependentUpon>InsCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="City\Cities.resx">
+      <DependentUpon>Cities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="City\DelCity.resx">
+      <DependentUpon>DelCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="City\InsCity.resx">
+      <DependentUpon>InsCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\DelClient.resx">
+      <DependentUpon>DelClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\InsClient.resx">
+      <DependentUpon>InsClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facture\DelFacture.resx">
+      <DependentUpon>DelFacture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facture\ExcelFacture.resx">
+      <DependentUpon>ExcelFacture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facture\InsFacture.resx">
+      <DependentUpon>InsFacture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nakladnaya\DelNakladnaya.resx">
+      <DependentUpon>DelNakladnaya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nakladnaya\ExcelNakladnaya.resx">
+      <DependentUpon>ExcelNakladnaya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nakladnaya\InsNakladnaya.resx">
+      <DependentUpon>InsNakladnaya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stuff\DelStuff.resx">
+      <DependentUpon>DelStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stuff\InsStuff.resx">
+      <DependentUpon>InsStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Package\DelPackage.resx">
+      <DependentUpon>DelPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Package\InsPackage.resx">
+      <DependentUpon>InsPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Package\Packages.resx">
+      <DependentUpon>Packages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stuff\Stuff.resx">
+      <DependentUpon>Stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplies\DelSupplies.resx">
+      <DependentUpon>DelSupplies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplies\InsSupplies.resx">
+      <DependentUpon>InsSupplies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pharm\DelPharm.resx">
+      <DependentUpon>DelPharm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pharm\InsPharm.resx">
+      <DependentUpon>InsPharm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pharm\Pharm.resx">
+      <DependentUpon>Pharm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AuthRegister\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplies\Suppliers.resx">
+      <DependentUpon>Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="LSkladDataSet.xsc">
+      <DependentUpon>LSkladDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LSkladDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LSkladDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LSkladDataSet.xss">
+      <DependentUpon>LSkladDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\key.png" />
+    <Content Include="Icons\lock.png" />
+    <Content Include="LSklad.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
